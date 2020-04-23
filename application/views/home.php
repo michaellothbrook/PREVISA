@@ -18,13 +18,7 @@
 						<tr>
 							<td><?=$registro->Nome?></td>
 							<td><?=$registro->DataNascimento?></td>
-							<td>
-								<?php
-									 $children = new FuncionarioModel();
-									 $num = $children->numChildren($registro->CodFuncionario)
-								?>
-								<?=$num?>
-							</td>
+							<td><?=$registro->qtd?></td>
 							<td>
 								<a href="<?=base_url('edit-funcionario/').$registro->CodFuncionario?>" class="btn btn-primary btn-xs editEmployee">
 									<i class="far fa-edit"></i>

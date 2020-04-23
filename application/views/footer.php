@@ -72,7 +72,7 @@
 
 
 			//DELETE FUNCIONARIOS
-			$('.confirmDeleteFuncionario').on('click', function(e) {
+			$('.confirmDeleteFuncionario').on('click', function() {
 				// e.preventDefault();
 
 				$(this).attr('disabled',true)
@@ -80,14 +80,14 @@
 				let a = $('.editEmployee').attr('href');
 				console.log(a);
 				
-				let id = a.substr(-2);
-				console.log(id);
+				let idEmployeeDelete = $('.idEmployee').attr('id');
+				console.log(idEmployeeDelete);
 
 				let url = "<?=base_url()?>"
 				$.ajax({
-					url: url+'deleteEmployee/'+id,
+					url: url+'deleteEmployee/'+idEmployeeDelete,
 					type: "POST",
-					data: id,
+					data: idEmployeeDelete,
 					dataType: "json"
 				})
 				.done(function(response) {
@@ -106,14 +106,14 @@
 							.text('Aguarde...');
 
 				
-				let id = $('.idFilho').attr('id');
-				console.log(id);
+				let idChildrenDelete = $('.idFilho').attr('id');
+				console.log(idChildrenDelete);
 				
 				let url = "<?=base_url()?>"
 				$.ajax({
-					url: url+'deleteChildren/'+id,
+					url: url+'deleteChildren/'+idChildrenDelete,
 					type: "POST",
-					data: id,
+					data: idChildrenDelete,
 					dataType: "json"
 				})
 				.done(function(response) {
@@ -135,10 +135,10 @@
 
 				
 				let data = $(this).serializeArray();
-				let idEmployee = <?= $this->uri->segment(2) != null  ? $this->uri->segment(2) : 'n' ?>;
+				let idEmployeeEdit = <?= $this->uri->segment(2) != null  ? $this->uri->segment(2) : 'n' ?>;
 				let url = "<?=base_url()?>"
 				$.ajax({
-					url: url+'submit-edit-funcionario/'+idEmployee,
+					url: url+'submit-edit-funcionario/'+idEmployeeEdit,
 					type: "POST",
 					data: data,
 					dataType: "json"

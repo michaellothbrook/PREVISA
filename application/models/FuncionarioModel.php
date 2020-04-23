@@ -6,10 +6,7 @@ class FuncionarioModel extends CI_Model
 	public function read()
 	{
 		$query = $this->db
-		->select('*')
-		->from('funcionario')
-		->order_by('CodFuncionario','DESC')
-		->get();
+		->query("SELECT *,(SELECT COUNT(*) FROM funcionariofilho AS ff WHERE ff.CodFuncionario = f.CodFuncionario) AS qtd FROM `funcionario` AS f");
 		return $query->result();
 		
 	}
